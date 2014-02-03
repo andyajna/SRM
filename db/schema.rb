@@ -11,7 +11,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140203064537) do
+ActiveRecord::Schema.define(version: 20140203123234) do
+
+  create_table "roles", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "students", force: true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "phone"
+    t.string   "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "updates", force: true do |t|
+    t.datetime "date",       limit: 255
+    t.string   "staff"
+    t.string   "note"
+    t.integer  "student_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "followup"
+  end
+
+  add_index "updates", ["student_id"], name: "index_updates_on_student_id"
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

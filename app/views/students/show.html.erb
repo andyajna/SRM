@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<h3>Name:
+  <%= @student.name %>
+</h3>
+
+<p>
+  <strong>Email:</strong>
+  <%= @student.email %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @student.phone %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @student.status %>
+</p>
+
+<h4>Updates</h4>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Note</th>
+      <th>Follow Up</th>
+      <th>Staff</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @updates.each do |update| %>
+      <tr>
+        <td><%= update.date.strftime('%e %h %Y, %H:%M') %></td>
+        <td><%= update.note %></td>
+        <td><%= update.followup %></td>
+        <td><%= update.staff %></td>
+        <td><%= link_to 'Show', update, class: 'btn btn-sm btn-primary' %></td>
+        <td><%= link_to 'Edit', edit_update_path(update), class: 'btn btn-sm btn-warning' %></td>
+        <td><%= link_to 'Destroy', update, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Add an update', new_update_path, class: 'btn btn-sm btn-success'  %>
+<p>&nbsp;</p>
+<%= link_to 'Edit this student', edit_student_path(@student), class: 'btn btn-sm btn-warning' %> 
+<%= link_to 'Back to all students listing', students_path, class: 'btn btn-sm btn-primary' %>

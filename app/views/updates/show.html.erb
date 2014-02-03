@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+<h3>Update for <%= link_to @update.student.name, student_path(@update.student) %></h3>
+
+<p>
+  <strong>Update made by:</strong> <%= @update.staff %> on <%= @update.date.strftime('%e %h %Y') %> at <%= @update.date.strftime('%H:%M') %> 
+</p>
+<p>
+  <strong>Note:</strong><br>
+  <%= @update.note %>
+</p>
+<p>
+  <strong>Follow Up:</strong><br>
+  <%= @update.followup %>
+</p>
+<p>&nbsp;</p>
+
+
+<%= link_to 'Edit this update', edit_update_path(@update), class: 'btn btn-sm btn-warning' %> 
+<%= link_to 'List all updates', updates_path, class: 'btn btn-sm btn-success' %>
